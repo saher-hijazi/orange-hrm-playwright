@@ -1,14 +1,16 @@
 from playwright.sync_api import Page, expect
 
+from data.Employee import Employee
+
 
 class AddEmployeePage:
     def __init__(self, page: Page):
         self.page = page
 
-    def add_employee_without_details(self, first, middle, last):
-        self.page.get_by_placeholder("First Name").fill(first)
-        self.page.get_by_placeholder("Middle Name").fill(middle)
-        self.page.get_by_placeholder("Last Name").fill(last)
+    def add_employee_without_details(self, employee: Employee = Employee()):
+        self.page.get_by_placeholder("First Name").fill(employee.first)
+        self.page.get_by_placeholder("Middle Name").fill(employee.middle)
+        self.page.get_by_placeholder("Last Name").fill(employee.last)
 
         employee_id_input = (self.page.get_by_text("Employee Id")
                              .locator("..")
