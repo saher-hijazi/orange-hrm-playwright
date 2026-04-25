@@ -2,7 +2,6 @@ import pytest
 from playwright.sync_api import Page, expect
 
 from data.Employee import Employee
-from pages import pim
 from pages.pim_page import PimPage
 
 
